@@ -10,13 +10,11 @@ void merge(int array[], int left, int mid, int right)
     {
         if(array[idx_l] <= array[idx_r])
         {
-            sub_array[idx] = array[idx_l];
-            idx++; idx_l++;
+            sub_array[idx++] = array[idx_l++];
         }
         else
         {
-            sub_array[idx] = array[idx_r];
-            idx++; idx_r++;
+            sub_array[idx++] = array[idx_r++];
         }
     }
 
@@ -39,12 +37,9 @@ void Merge_Sort(int array[], int left, int right)
     if(right <= left)
         return;
     int mid = (int(right - left) / 2) + left;
-    if(mid != 0)
-    {
-        Merge_Sort(array, left, mid);
-        Merge_Sort(array, mid + 1, right);
-        merge(array, left, mid, right);
-    }
+    Merge_Sort(array, left, mid);
+    Merge_Sort(array, mid + 1, right);
+    merge(array, left, mid, right);
 }
 
 int main()
